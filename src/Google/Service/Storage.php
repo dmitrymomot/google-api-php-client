@@ -31,6 +31,8 @@
  */
 class Google_Service_Storage extends Google_Service
 {
+  /** View and manage your data across Google Cloud Platform services. */
+  const CLOUD_PLATFORM = "https://www.googleapis.com/auth/cloud-platform";
   /** Manage your data and permissions in Google Cloud Storage. */
   const DEVSTORAGE_FULL_CONTROL = "https://www.googleapis.com/auth/devstorage.full_control";
   /** View your data in Google Cloud Storage. */
@@ -1620,7 +1622,7 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
     return $this->call('delete', array($params));
   }
   /**
-   * Retrieves objects or their metadata. (objects.get)
+   * Retrieves an object or its metadata. (objects.get)
    *
    * @param string $bucket
    * Name of the bucket in which the object resides.
@@ -1839,6 +1841,9 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
 
 class Google_Service_Storage_Bucket extends Google_Collection
 {
+  protected $collection_key = 'defaultObjectAcl';
+  protected $internal_gapi_mappings = array(
+  );
   protected $aclType = 'Google_Service_Storage_BucketAccessControl';
   protected $aclDataType = 'array';
   protected $corsType = 'Google_Service_Storage_BucketCors';
@@ -2049,6 +2054,8 @@ class Google_Service_Storage_Bucket extends Google_Collection
 
 class Google_Service_Storage_BucketAccessControl extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $bucket;
   public $domain;
   public $email;
@@ -2175,6 +2182,8 @@ class Google_Service_Storage_BucketAccessControl extends Google_Model
 
 class Google_Service_Storage_BucketAccessControlProjectTeam extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $projectNumber;
   public $team;
 
@@ -2201,6 +2210,9 @@ class Google_Service_Storage_BucketAccessControlProjectTeam extends Google_Model
 
 class Google_Service_Storage_BucketAccessControls extends Google_Collection
 {
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
   protected $itemsType = 'Google_Service_Storage_BucketAccessControl';
   protected $itemsDataType = 'array';
   public $kind;
@@ -2228,6 +2240,9 @@ class Google_Service_Storage_BucketAccessControls extends Google_Collection
 
 class Google_Service_Storage_BucketCors extends Google_Collection
 {
+  protected $collection_key = 'responseHeader';
+  protected $internal_gapi_mappings = array(
+  );
   public $maxAgeSeconds;
   public $method;
   public $origin;
@@ -2276,6 +2291,9 @@ class Google_Service_Storage_BucketCors extends Google_Collection
 
 class Google_Service_Storage_BucketLifecycle extends Google_Collection
 {
+  protected $collection_key = 'rule';
+  protected $internal_gapi_mappings = array(
+  );
   protected $ruleType = 'Google_Service_Storage_BucketLifecycleRule';
   protected $ruleDataType = 'array';
 
@@ -2292,6 +2310,8 @@ class Google_Service_Storage_BucketLifecycle extends Google_Collection
 
 class Google_Service_Storage_BucketLifecycleRule extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   protected $actionType = 'Google_Service_Storage_BucketLifecycleRuleAction';
   protected $actionDataType = '';
   protected $conditionType = 'Google_Service_Storage_BucketLifecycleRuleCondition';
@@ -2320,6 +2340,8 @@ class Google_Service_Storage_BucketLifecycleRule extends Google_Model
 
 class Google_Service_Storage_BucketLifecycleRuleAction extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $type;
 
   public function setType($type)
@@ -2335,6 +2357,8 @@ class Google_Service_Storage_BucketLifecycleRuleAction extends Google_Model
 
 class Google_Service_Storage_BucketLifecycleRuleCondition extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $age;
   public $createdBefore;
   public $isLive;
@@ -2383,6 +2407,8 @@ class Google_Service_Storage_BucketLifecycleRuleCondition extends Google_Model
 
 class Google_Service_Storage_BucketLogging extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $logBucket;
   public $logObjectPrefix;
 
@@ -2409,6 +2435,8 @@ class Google_Service_Storage_BucketLogging extends Google_Model
 
 class Google_Service_Storage_BucketOwner extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $entity;
   public $entityId;
 
@@ -2435,6 +2463,8 @@ class Google_Service_Storage_BucketOwner extends Google_Model
 
 class Google_Service_Storage_BucketVersioning extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $enabled;
 
   public function setEnabled($enabled)
@@ -2450,6 +2480,8 @@ class Google_Service_Storage_BucketVersioning extends Google_Model
 
 class Google_Service_Storage_BucketWebsite extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $mainPageSuffix;
   public $notFoundPage;
 
@@ -2476,6 +2508,9 @@ class Google_Service_Storage_BucketWebsite extends Google_Model
 
 class Google_Service_Storage_Buckets extends Google_Collection
 {
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
   protected $itemsType = 'Google_Service_Storage_Bucket';
   protected $itemsDataType = 'array';
   public $kind;
@@ -2514,6 +2549,8 @@ class Google_Service_Storage_Buckets extends Google_Collection
 
 class Google_Service_Storage_Channel extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $address;
   public $expiration;
   public $id;
@@ -2626,8 +2663,17 @@ class Google_Service_Storage_Channel extends Google_Model
   }
 }
 
+class Google_Service_Storage_ChannelParams extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+}
+
 class Google_Service_Storage_ComposeRequest extends Google_Collection
 {
+  protected $collection_key = 'sourceObjects';
+  protected $internal_gapi_mappings = array(
+  );
   protected $destinationType = 'Google_Service_Storage_StorageObject';
   protected $destinationDataType = '';
   public $kind;
@@ -2667,6 +2713,8 @@ class Google_Service_Storage_ComposeRequest extends Google_Collection
 
 class Google_Service_Storage_ComposeRequestSourceObjects extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $generation;
   public $name;
   protected $objectPreconditionsType = 'Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions';
@@ -2705,6 +2753,8 @@ class Google_Service_Storage_ComposeRequestSourceObjects extends Google_Model
 
 class Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $ifGenerationMatch;
 
   public function setIfGenerationMatch($ifGenerationMatch)
@@ -2720,6 +2770,8 @@ class Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions exte
 
 class Google_Service_Storage_ObjectAccessControl extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $bucket;
   public $domain;
   public $email;
@@ -2868,6 +2920,8 @@ class Google_Service_Storage_ObjectAccessControl extends Google_Model
 
 class Google_Service_Storage_ObjectAccessControlProjectTeam extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $projectNumber;
   public $team;
 
@@ -2894,6 +2948,9 @@ class Google_Service_Storage_ObjectAccessControlProjectTeam extends Google_Model
 
 class Google_Service_Storage_ObjectAccessControls extends Google_Collection
 {
+  protected $collection_key = 'items';
+  protected $internal_gapi_mappings = array(
+  );
   public $items;
   public $kind;
 
@@ -2920,6 +2977,9 @@ class Google_Service_Storage_ObjectAccessControls extends Google_Collection
 
 class Google_Service_Storage_Objects extends Google_Collection
 {
+  protected $collection_key = 'prefixes';
+  protected $internal_gapi_mappings = array(
+  );
   protected $itemsType = 'Google_Service_Storage_StorageObject';
   protected $itemsDataType = 'array';
   public $kind;
@@ -2969,6 +3029,9 @@ class Google_Service_Storage_Objects extends Google_Collection
 
 class Google_Service_Storage_StorageObject extends Google_Collection
 {
+  protected $collection_key = 'acl';
+  protected $internal_gapi_mappings = array(
+  );
   protected $aclType = 'Google_Service_Storage_ObjectAccessControl';
   protected $aclDataType = 'array';
   public $bucket;
@@ -3237,8 +3300,16 @@ class Google_Service_Storage_StorageObject extends Google_Collection
   }
 }
 
+class Google_Service_Storage_StorageObjectMetadata extends Google_Model
+{
+  protected $internal_gapi_mappings = array(
+  );
+}
+
 class Google_Service_Storage_StorageObjectOwner extends Google_Model
 {
+  protected $internal_gapi_mappings = array(
+  );
   public $entity;
   public $entityId;
 
